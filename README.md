@@ -2,7 +2,7 @@
 
 ## Overview
 
-APEX-ML (also known as "One Above All") is an advanced automated machine learning system that utilizes a multi-agent architecture to handle the complete machine learning pipeline. The system employs specialized agents to perform different aspects of ML tasks including data preprocessing, feature engineering, model selection, hyperparameter optimization, ensemble methods, and result interpretation.
+APEX-ML is an advanced automated machine learning system that utilizes a multi-agent architecture to handle the complete machine learning pipeline. The system employs specialized agents to perform different aspects of ML tasks including data preprocessing, feature engineering, model selection, hyperparameter optimization, ensemble methods, and result interpretation.
 
 ## Project Structure
 
