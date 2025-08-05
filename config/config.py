@@ -47,6 +47,17 @@ class Config:
     verbose: bool = True
     save_intermediate_results: bool = True
     
+    # Advanced Agents Configuration
+    use_feature_engineering: bool = True
+    use_hyperopt: bool = True
+    use_error_analysis: bool = True
+    use_cv_strategy: bool = True
+    use_explainability: bool = True
+    
+    # Agent-specific settings
+    hyperopt_trials: int = 50  # Number of hyperopt trials
+    feature_engineering_strategies: int = 3  # Number of FE strategies to try
+    
     def validate(self):
         """Validate configuration"""
         if not self.openrouter_api_key:
