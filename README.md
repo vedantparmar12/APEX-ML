@@ -1,87 +1,150 @@
-# One-Above-All: ML Engineering System for Kaggle Gold Medals
+# APEX-ML Project Documentation
 
-One-Above-All is a sophisticated Machine Learning Engineering system that achieves Kaggle gold medal performance through a novel approach combining web search, ablation studies, targeted refinement, and ensemble strategies. This implementation replicates the MLE-STAR methodology using OpenRouter API for LLM interactions.
+## Overview
 
-## 🏆 Key Features
+APEX-ML (also known as "One Above All") is an advanced automated machine learning system that utilizes a multi-agent architecture to handle the complete machine learning pipeline. The system employs specialized agents to perform different aspects of ML tasks including data preprocessing, feature engineering, model selection, hyperparameter optimization, ensemble methods, and result interpretation.
 
-### Core Agents (MLE-STAR)
-- **Web Search-Based Model Discovery**: Automatically searches for state-of-the-art models suitable for your task
-- **Parallel Solution Generation**: Creates multiple initial solutions concurrently
-- **Ablation-Guided Refinement**: Identifies critical code components and improves them systematically
-- **Advanced Ensemble Strategies**: Combines solutions using various techniques for optimal performance
-- **Automatic Debugging**: Handles errors gracefully with LLM-assisted debugging
-- **Competition-Ready Submissions**: Generates properly formatted submission files
+## Project Structure
 
-### Enhanced Agents (Beyond MLE-STAR)
-- **Feature Engineering Agent**: Creates sophisticated features using domain knowledge and statistical techniques
-- **Hyperparameter Optimization Agent**: Uses Bayesian optimization (Optuna) for intelligent parameter tuning
-- **Error Analysis Agent**: Analyzes prediction errors to identify patterns and improve model
-- **Cross-Validation Strategy Agent**: Implements advanced CV strategies (Stratified, Time Series, Group K-Fold)
-- **Model Explainability Agent**: Adds SHAP values and feature importance for interpretability
+## Project Structure
 
-## 📊 Performance
-
-### MLE-STAR Core Performance
-Based on the original methodology, this system achieves:
-- **63.6% medal rate** on ML competitions
-- **36.4% Gold medals**
-- Significantly outperforms traditional ML approaches
-
-### Enhanced Performance with Additional Agents
-With the five additional agents, expect even better results:
-- **Feature Engineering**: +5-15% performance boost through advanced features
-- **Hyperparameter Optimization**: +3-10% improvement via optimal parameters
-- **Error Analysis**: +2-5% gain from targeted error correction
-- **CV Strategy**: More robust and reliable performance estimates
-- **Explainability**: Better feature selection and model understanding
-
-Combined, these enhancements can push the system towards **70-80% medal rate** with higher gold medal percentage.
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Python 3.8+
-- OpenRouter API key
-- CUDA-capable GPU (recommended)
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd one-above-all
+```
+one-above-all/
+├── agents/                 # Agent implementations
+│   ├── initialization/     # Model search and evaluation
+│   ├── refinement/        # Ablation studies and improvements
+│   ├── ensemble/          # Solution combination strategies
+│   ├── feature_engineering/ # Advanced feature creation
+│   ├── hyperopt/          # Bayesian hyperparameter optimization
+│   ├── error_analysis/    # Error pattern analysis
+│   ├── cv_strategy/       # Advanced cross-validation
+│   ├── explainability/    # Model interpretability
+│   └── submission/        # Final submission generation
+├── config/                # Configuration files
+├── utils/                 # Helper utilities
+│   ├── openrouter_client.py  # LLM interactions
+│   ├── web_search.py         # DuckDuckGo search
+│   └── code_executor.py      # Safe code execution
+├── tasks/                 # Competition tasks
+├── workspace/             # Working directory
+└── main.py               # Main orchestrator
 ```
 
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+## Key Features
 
-3. Set your OpenRouter API key:
-```bash
-export OPENROUTER_API_KEY="your-api-key-here"
-```
+### Multi-Agent Architecture
+The system employs a sophisticated multi-agent approach where each agent specializes in a specific aspect of the machine learning pipeline:
 
-### Running the System
+1. **Automated Data Analysis** - Initial data exploration and understanding
+2. **Intelligent Feature Engineering** - Automated creation of relevant features
+3. **Model Selection** - Automated selection of appropriate algorithms
+4. **Hyperparameter Optimization** - Systematic parameter tuning using Optuna
+5. **Ensemble Methods** - Combination of multiple models for improved performance
+6. **Cross-Validation** - Robust validation strategies
+7. **Error Analysis** - Deep dive into model failures and improvements
+8. **Model Explainability** - SHAP-based model interpretation
+9. **Automated Refinement** - Iterative model improvement
 
-Basic usage:
-```bash
-python main.py --task california-housing-prices
-```
+### Technology Stack
 
-With custom parameters:
-```bash
-python main.py \
-    --task your-task-name \
-    --model anthropic/claude-3.5-sonnet \
-    --num-solutions 3 \
-    --api-key your-api-key
-```
+**Core ML Libraries**
+- **scikit-learn** - Primary machine learning framework
+- **XGBoost** - Gradient boosting framework
+- **LightGBM** - Efficient gradient boosting
+- **CatBoost** - Categorical feature handling
+- **PyTorch** - Deep learning capabilities
 
-## 🔧 Configuration
+**Data Processing**
+- **pandas** - Data manipulation and analysis
+- **numpy** - Numerical computing
 
-Edit `config/config.py` to customize:
+**Optimization and Tuning**
+- **Optuna** - Hyperparameter optimization
+- **joblib** - Parallel processing
+
+**Model Interpretation**
+- **SHAP** - Model explainability
+- **ELI5** - Model interpretation
+
+**Visualization**
+- **matplotlib** - Basic plotting
+- **seaborn** - Statistical visualizations
+
+**AI Integration**
+- **OpenAI** - LLM integration for intelligent decision making
+- **DuckDuckGo Search** - Web search for additional context
+
+**Utilities**
+- **requests** - HTTP client
+- **aiohttp** - Asynchronous HTTP
+- **BeautifulSoup4** - Web scraping
+- **python-dotenv** - Environment variable management
+- **tqdm** - Progress bars
+
+## Architecture Overview
+
+## Pipeline Stages
+
+### Core Pipeline
+
+**1. Initialization**
+- Summarizes task for effective search
+- Searches web for relevant ML models
+- Evaluates each model on the dataset
+- Merges best-performing solutions
+
+**2. Refinement**
+- Performs ablation studies to identify critical components
+- Extracts code blocks with highest impact
+- Tries multiple improvement strategies
+- Selects best improvements based on validation scores
+
+**3. Ensemble**
+- Proposes novel ensemble strategies
+- Implements techniques like voting, stacking, blending
+- Iteratively refines ensemble approach
+- Selects best ensemble configuration
+
+**4. Submission**
+- Selects overall best solution
+- Adds submission generation code
+- Creates competition-ready output file
+
+### Enhanced Pipeline (Optional Agents)
+
+**5. Feature Engineering**
+- Analyzes current feature usage
+- Generates polynomial and interaction features
+- Creates domain-specific transformations
+- Tests multiple feature strategies
+
+**6. Hyperparameter Optimization**
+- Identifies tunable parameters
+- Uses Optuna for Bayesian optimization
+- Tests parameter combinations efficiently
+- Applies best parameters to final model
+
+**7. Error Analysis**
+- Analyzes prediction residuals
+- Identifies patterns in errors
+- Suggests targeted improvements
+- Implements error-based corrections
+
+**8. Cross-Validation Strategy**
+- Selects appropriate CV method
+- Implements advanced splitting strategies
+- Provides robust performance estimates
+- Prevents overfitting
+
+**9. Model Explainability**
+- Calculates feature importance
+- Generates SHAP values
+- Creates interpretability visualizations
+- Improves model based on insights
+
+## Configuration
+
+Edit `config/config.py` to customize system behavior:
 
 ### Core Settings
 - `model_name`: LLM model to use (via OpenRouter)
@@ -102,85 +165,50 @@ Edit `config/config.py` to customize:
 - `hyperopt_trials`: Number of optimization trials (default: 50)
 - `feature_engineering_strategies`: Number of FE strategies to try (default: 3)
 
-## 📁 Project Structure
+## Installation and Setup
 
-```
-one-above-all/
-├── agents/                 # Agent implementations
-│   ├── initialization/     # Model search and evaluation
-│   ├── refinement/        # Ablation studies and improvements
-│   ├── ensemble/          # Solution combination strategies
-│   └── submission/        # Final submission generation
-├── config/                # Configuration files
-├── utils/                 # Helper utilities
-│   ├── openrouter_client.py  # LLM interactions
-│   ├── web_search.py         # DuckDuckGo search
-│   └── code_executor.py      # Safe code execution
-├── tasks/                 # Competition tasks
-├── workspace/             # Working directory
-└── main.py               # Main orchestrator
+### Quick Start
+
+**Prerequisites**
+- Python 3.8+
+- OpenRouter API key
+- CUDA-capable GPU (recommended)
+
+**Installation**
+
+1. Clone the repository:
+```bash
+git clone https://github.com/vedantparmar12/APEX-ML.git
+cd one-above-all
 ```
 
-## 🔄 Pipeline Stages
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-### Core Pipeline (MLE-STAR)
+3. Set your OpenRouter API key:
+```bash
+export OPENROUTER_API_KEY="your-api-key-here"
+```
 
-#### 1. Initialization
-- Summarizes task for effective search
-- Searches web for relevant ML models
-- Evaluates each model on the dataset
-- Merges best-performing solutions
+**Running the System**
 
-#### 2. Refinement
-- Performs ablation studies to identify critical components
-- Extracts code blocks with highest impact
-- Tries multiple improvement strategies
-- Selects best improvements based on validation scores
+Basic usage:
+```bash
+python main.py --task california-housing-prices
+```
 
-#### 3. Ensemble
-- Proposes novel ensemble strategies
-- Implements techniques like voting, stacking, blending
-- Iteratively refines ensemble approach
-- Selects best ensemble configuration
+With custom parameters:
+```bash
+python main.py \
+    --task your-task-name \
+    --model anthropic/claude-3.5-sonnet \
+    --num-solutions 3 \
+    --api-key your-api-key
+```
 
-#### 4. Submission
-- Selects overall best solution
-- Adds submission generation code
-- Creates competition-ready output file
-
-### Enhanced Pipeline (Optional Agents)
-
-#### 5. Feature Engineering
-- Analyzes current feature usage
-- Generates polynomial and interaction features
-- Creates domain-specific transformations
-- Tests multiple feature strategies
-
-#### 6. Hyperparameter Optimization
-- Identifies tunable parameters
-- Uses Optuna for Bayesian optimization
-- Tests parameter combinations efficiently
-- Applies best parameters to final model
-
-#### 7. Error Analysis
-- Analyzes prediction residuals
-- Identifies patterns in errors
-- Suggests targeted improvements
-- Implements error-based corrections
-
-#### 8. Cross-Validation Strategy
-- Selects appropriate CV method
-- Implements advanced splitting strategies
-- Provides robust performance estimates
-- Prevents overfitting
-
-#### 9. Model Explainability
-- Calculates feature importance
-- Generates SHAP values
-- Creates interpretability visualizations
-- Improves model based on insights
-
-## 📋 Task Format
+## Task Format
 
 Place your tasks in the `tasks/` directory with this structure:
 
@@ -192,7 +220,7 @@ tasks/
     └── test.csv             # Test data
 ```
 
-### Example task_description.txt:
+Example `task_description.txt`:
 ```
 # Task
 Predict the target variable.
@@ -201,18 +229,13 @@ Predict the target variable.
 root_mean_squared_error
 
 # Submission Format
-```
-target
-123.45
-678.90
-...
-```
+target 123.45 678.90 ...
 
 # Dataset
 Description of features and target...
 ```
 
-## 🔍 Monitoring Progress
+## Monitoring Progress
 
 The system provides detailed progress updates:
 
@@ -234,25 +257,73 @@ The system provides detailed progress updates:
 [Submission] Best solution selected with score: 0.115
 ```
 
-## 🛠️ Advanced Usage
+## Project Metrics
+
+- **Total Files**: 40
+- **Total Lines of Code**: 6,865
+- **Primary Language**: Python (33 files)
+- **Documentation Files**: 2 Markdown files
+- **Configuration Files**: 2 text files
+- **Data Files**: 2 CSV files
+
+### Largest Components
+- Training data: `tasks/california-housing-prices/train.csv` (2,401 lines)
+- Initialization agent: `agents/initialization/agent.py` (13,615 bytes)
+- Refinement agent: `agents/refinement/agent.py` (12,621 bytes)
+- Code executor utility: `utils/code_executor.py` (10,016 bytes)
+
+## Agent Details
+
+### Initialization Agent
+Responsible for data loading, initial preprocessing, and problem setup. This agent analyzes the dataset characteristics and determines the appropriate ML approach.
+
+### Feature Engineering Agent
+Creates new features, handles categorical encoding, and performs feature selection. Uses domain knowledge and statistical methods to improve model input quality.
+
+### Hyperparameter Optimization Agent
+Utilizes Optuna for systematic hyperparameter tuning across different algorithms. Implements efficient search strategies to find optimal parameters.
+
+### Ensemble Agent
+Combines multiple models using various ensemble techniques such as voting, stacking, and blending to improve prediction accuracy.
+
+### Refinement Agent
+Analyzes model performance, identifies weaknesses, and suggests improvements. Implements iterative refinement strategies.
+
+### Explainability Agent
+Provides model interpretations using SHAP values and other explainability techniques to understand model decisions.
+
+## Advanced Usage
 
 ### Custom Web Search
-
 Modify `utils/web_search.py` to use different search engines or add specialized sources.
 
 ### Custom Models
-
 Add preferred models to search queries by modifying prompts in agent files.
 
 ### Debugging
-
 Enable verbose logging:
 ```python
 CONFIG.verbose = True
 CONFIG.save_intermediate_results = True
 ```
 
-## 🤝 Contributing
+## Important Notes
+
+- Ensure you have sufficient OpenRouter credits
+- GPU recommended for faster model training
+- Results may vary based on LLM model used
+- Always verify submission format matches competition requirements
+
+## Support
+
+For issues or questions:
+- Open an issue on GitHub
+- Check existing documentation
+- Review agent logs in workspace directory
+
+Remember: This system is designed to achieve competitive performance, but success also depends on understanding your specific competition requirements and data characteristics.
+
+## Contributing
 
 1. Fork the repository
 2. Create your feature branch
@@ -260,30 +331,6 @@ CONFIG.save_intermediate_results = True
 4. Push to the branch
 5. Create a Pull Request
 
-## 📜 License
+## License
 
 This project is licensed under the MIT License.
-
-## 🙏 Acknowledgments
-
-- Based on the MLE-STAR paper and implementation
-- Uses OpenRouter for LLM access
-- DuckDuckGo for web search functionality
-
-## ⚠️ Important Notes
-
-- Ensure you have sufficient OpenRouter credits
-- GPU recommended for faster model training
-- Results may vary based on LLM model used
-- Always verify submission format matches competition requirements
-
-## 📞 Support
-
-For issues or questions:
-- Open an issue on GitHub
-- Check existing documentation
-- Review agent logs in workspace directory
-
----
-
-**Remember**: This system is designed to achieve competitive performance, but success also depends on understanding your specific competition requirements and data characteristics.
