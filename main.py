@@ -12,6 +12,11 @@ from agents.initialization.agent import run_initialization_agents
 from agents.refinement.agent import run_refinement_agents
 from agents.ensemble.agent import run_ensemble_agent
 from agents.submission.agent import run_submission_agent
+from agents.feature_engineering.agent import FeatureEngineeringAgent
+from agents.hyperopt.agent import HyperoptAgent
+from agents.error_analysis.agent import ErrorAnalysisAgent
+from agents.cv_strategy.agent import CVStrategyAgent
+from agents.explainability.agent import ExplainabilityAgent
 
 
 class OneAboveAll:

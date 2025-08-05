@@ -1,41 +1,38 @@
-"""Prompts for the Submission Agent"""
+"""Prompts for the Submission Agent - Hybrid approach with exact critical prompts"""
 
 
 class SubmissionPrompts:
     """Collection of prompts for submission phase"""
     
     def get_submission_prompt(self, task_description: str, code: str) -> str:
-        """Get prompt for adding submission code"""
+        """Get prompt for adding submission code - EXACT from ADK with minor adaptation"""
         
-        return f"""# Task description
+        return f"""# Introduction
+- You are a Kaggle grandmaster attending a competition.
+- In order to win this competition, you need to come up with an excellent solution in Python.
+- We will now provide a task description and a Python solution.
+- What you have to do on the solution is just loading test samples and create a submission file.
+
+# Task description
 {task_description}
 
-# Current solution code
+# Python solution
 ```python
 {code}
 ```
 
 # Your task
-- Add code to the above solution to create a submission file for the competition.
-- The submission file should be saved as 'submission.csv' in the current directory.
-- Make sure the submission format matches exactly what is specified in the task description.
-- The code should:
-  1. Load the test data from './input/test.csv'
-  2. Apply the same preprocessing as used for training
-  3. Make predictions using the trained model(s)
-  4. Create a submission file with the correct format
-  5. Save it as 'submission.csv'
+- Load the test samples and create a submission file.
+- All the provided data is already prepared and available in the `./input` directory. There is no need to unzip any files.
+- Test data is available in the `./input` directory.
+- Save the test predictions in a `submission.csv` file.
+- You should not drop any test samples. Predict the target value for all test samples.
+- This is a very easy task because the only thing to do is to load test samples and then replace the validation samples with the test samples. Then you can even use the full training set!
 
-# Important requirements
-- Do not modify the existing training code, only add the submission generation part.
-- Ensure all necessary imports are included.
-- Handle any potential errors gracefully.
-- The submission file must have the exact column names and format as specified.
-- Print a confirmation message when the submission file is created successfully.
-
-# Response format
-- Your response should be a single markdown code block (wrapped in ```) containing the complete code.
-- The code should include both the original solution and the added submission generation code.
+# Required
+- Do not modify the given Python solution code too much. Try to integarte test submission with minimal changes.
 - There should be no additional headings or text in your response.
 - The code should be a single-file Python program that is self-contained and can be executed as-is.
-- At the end, print: "Submission file saved successfully to submission.csv" """
+- Your response should only contain a single code block.
+- Do not use exit() function in the Python code.
+- Do not use try: and except: or if else to ignore unintended behavior."""
